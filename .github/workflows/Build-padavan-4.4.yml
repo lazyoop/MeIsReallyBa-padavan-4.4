@@ -61,6 +61,14 @@ jobs:
           sudo apt update
           sudo apt install libtool-bin gperf python3-docutils autopoint gettext
 
+      - name: Initialization Values
+        run: |
+          export build_date=$(TZ=UTC-8 date +"%y.%m.%d")
+          export release_version="padavan-4.4"
+
+          echo "build_date=$build_date" >> $GITHUB_ENV
+          echo "release_version=$release_version" >> $GITHUB_ENV
+
       - name: Run shellcheck
         run: sh ./trunk/tools/shellcheck.sh
 
@@ -68,6 +76,7 @@ jobs:
         run: |
           cd toolchain-mipsel
           sh dl_toolchain.sh
+          # sh dl_toolchain_vendor.sh
 
       - name: Start build
         run: |
@@ -89,7 +98,7 @@ jobs:
       - name: Upload images to Releases
         uses: softprops/action-gh-release@master
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: ${{env.release_version}}_${{env.build_date}}
           files: ${{ env.images_dir }}/*.trx
           body: |
             padavan-4.4固件
