@@ -50,7 +50,7 @@ jobs:
           - build_variant: "k2p"
             targets: "K2P"
           - build_variant: "mi-r3g"
-            targets: "mi-r3g"
+            targets: "MI-R3G"
 
     steps:
       - name:  Checkout Projects
