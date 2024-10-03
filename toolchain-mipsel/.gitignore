@@ -19,9 +19,9 @@ verbatim-data.mk
 maintainer/package-versions
 
 # Compressed files
-*.tar*
+#*.tar*
 *.zip
-*.xz
+#*.xz
 *.7zip
 !.tarball-version
 
@@ -41,8 +41,4 @@ testing/docker/*/xtools
 .build-all/
 
 toolchain-4.4.x/
-dl/
-
-mipsel-linux-uclibc.tar.xz
-
 docs/ct-ng.1
